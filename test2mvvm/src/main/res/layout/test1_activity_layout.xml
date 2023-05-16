@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="adapter"
+            type="android.widget.BaseAdapter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/test1_activity_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="跳转"
+            android:textSize="10sp" />
+        <Button
+            android:id="@+id/test1_finish_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="结束"
+            android:textSize="10sp" />
+        <Button
+            android:id="@+id/test1_livedata_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="get_livedata"
+            android:textSize="15sp" />
+
+        <ListView
+            android:id="@+id/test1_activity_listview"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:adapter="@{adapter}" />
+
+        <FrameLayout
+            android:id="@+id/test1_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</layout>

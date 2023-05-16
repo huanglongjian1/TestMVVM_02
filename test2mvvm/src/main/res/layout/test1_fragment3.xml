@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="Test3_FragmentBing">
+        <import type="com.android.test2mvvm.test1.fragment3.BookRatingUtils" />
+        <variable
+            name="view"
+            type="com.android.test2mvvm.test1.fragment3.Test3_Fragment" />
+
+        <variable
+            name="model"
+            type="com.android.test2mvvm.test1.fragment3.MainViewModel" />
+        <variable
+            name="SeeAds"
+            type="android.widget.CheckBox" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/loading"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#66aa00"
+            android:text="我是进度条"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
+            android:background="#EEEEEE"
+            android:hint="请输入内容"
+            android:inputType="textMultiLine"
+            android:padding="8dp"
+            android:text="@={model.content}"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loading" />
+
+        <CheckBox
+            android:id="@+id/seeAds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选中"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/test1_now_time" />
+
+        <TextView
+            android:id="@+id/tv_rating"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="40dp"
+            android:background="@color/red"
+            android:gravity="center"
+            android:text="@{BookRatingUtils.getRatingString(0)}"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/seeAds" />
+
+
+        <Button
+            android:id="@+id/test1_now_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="当前时间"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_save" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:onClick="@{view::onSaveClick}"
+            android:text="保存"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/btn_load"
+            app:layout_constraintTop_toBottomOf="@+id/et_content"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+        <Button
+            android:id="@+id/btn_load"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:onClick="@{view::onLoadClick}"
+            android:text="加载"
+            app:layout_constraintLeft_toRightOf="@+id/btn_save"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_content"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+        <TextView
+            android:id="@+id/tv_max_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            android:text="/100"
+            android:textColor="#0077AA"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/et_content"
+            app:layout_constraintRight_toRightOf="@+id/et_content" />
+
+        <TextView
+            android:id="@+id/tv_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@{String.valueOf(model.content.length()),default=0}"
+            android:textColor="@{(model.content.length() > 9 &amp;&amp; model.content.length() &lt; 101) ? @color/gray: @color/red, default=@color/red}"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/et_content"
+            app:layout_constraintRight_toLeftOf="@+id/tv_max_count" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

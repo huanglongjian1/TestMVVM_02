@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TestMVVM</string>
+    <string name="data_key">123456</string>
+    <string name="sp_name">hlj</string>
+</resources>

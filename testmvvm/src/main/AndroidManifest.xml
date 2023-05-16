@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".MyApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TestMVVM">
+        <activity
+            android:name=".MainActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".test1.Test1_Activity" />
+        <activity android:name=".test2.Test2_Activity" />
+        <activity android:name=".test3.Test3_Activity" />
+        <activity android:name=".test4.Test4_Activity" />
+        <activity android:name=".test5.Test5_Activity" />
+        <activity
+            android:name=".test6.Test6_Activity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name=".test7.Test7_Activity" />
+        <activity android:name=".test8.Test8_Activity" />
+        <activity android:name=".test9.Test9_Activity" />
+        <activity android:name=".test10.Test10_Activity" />
+        <activity android:name=".test11.Test11_Activity" />
+    </application>
+
+</manifest>

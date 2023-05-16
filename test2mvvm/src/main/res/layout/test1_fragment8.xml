@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.android.test2mvvm.test1.fragment8.UserViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.android.test2mvvm.test1.fragment8.Test1_Fragment8_A" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/test1_fragment8_showloading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:text="进度条"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/test1_fragment8_btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="添加"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/test1_fragment8_btn_clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="清空"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/test1_fragment8_btn_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="删除"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/test1_fragment8_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入:"
+            android:text="@={viewmodel.content}"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/test1_fragment8_save_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{fragment::setData}"
+            android:text="保存"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/test1_fragment8_load_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{fragment::getData}"
+            android:text="加载"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/test1_fragment8_add_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{fragment::add_data}"
+            android:text="添加"
+            android:textSize="20sp" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/test1_fragment8_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>
