@@ -3,7 +3,6 @@ package com.android.test2mvvm.test1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,26 +12,17 @@ import androidx.lifecycle.Observer;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.android.test2mvvm.BR;
-import com.android.test2mvvm.BaseActivity;
 import com.android.test2mvvm.R;
+import com.android.test2mvvm.base.BaseActivity;
 import com.android.test2mvvm.databinding.Test1ActivityLayoutBinding;
 import com.android.test2mvvm.module.FragmentModule;
 import com.android.test2mvvm.test1.fragment.Test1_Fragment;
-import com.android.test2mvvm.test1.fragment10.Test1_Fragment10;
 import com.android.test2mvvm.test1.fragment2.Test2_fragment;
-import com.android.test2mvvm.test1.fragment3.Test3_Fragment;
-import com.android.test2mvvm.test1.fragment4.Test1_fragment4;
-import com.android.test2mvvm.test1.fragment5.Test1_Fragment5;
-import com.android.test2mvvm.test1.fragment6.Test1_fragment6;
-import com.android.test2mvvm.test1.fragment7.Test1_Fragment7;
-import com.android.test2mvvm.test1.fragment8.Test1_Fragment8;
-import com.android.test2mvvm.test1.fragment8.Test1_Fragment8_A;
 import com.android.test2mvvm.test1.fragment8.bean.User;
 import com.android.test2mvvm.test1.fragment9.ui.login.LoginFragment;
 import com.android.test2mvvm.test1.retrofit.BingImg;
-import com.android.test2mvvm.test1.retrofit.RetrofitManager;
+import com.android.test2mvvm.util.retrofit.RetrofitManager;
 import com.android.test2mvvm.test1.retrofit.SplashService;
-import com.android.test2mvvm.test1.retrofit.javabean;
 import com.android.test2mvvm.util.Constants;
 import com.android.test2mvvm.util.Loge;
 
@@ -42,17 +32,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.annotations.NonNull;
-import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.schedulers.Schedulers;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 @AndroidEntryPoint
 @Route(path = Constants.TEST1_ACTIVITY)
-public class Test1_Activity extends BaseActivity {
+public class Test1_Activity extends AppCompatActivity {
     @Inject
     Test1_Fragment test1_fragment;
     @Inject
@@ -67,6 +50,7 @@ public class Test1_Activity extends BaseActivity {
 
     public MutableLiveData<BingImg> mutableLiveData = new MutableLiveData<>();
     public MutableLiveData<Throwable> throwableMutableLiveData = new MutableLiveData<>();
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,7 +70,7 @@ public class Test1_Activity extends BaseActivity {
                 Loge.e(user.toString());
                 Loge.e(test2_fragment.toString());
                 Loge.e(test2_fragment1.toString());
-                getSupportFragmentManager().beginTransaction().replace(R.id.test1_fragment, test2_fragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.test1_fragment, new LoginFragment()).commit();
             }
         });
         binding.test1FinishBtn.setOnClickListener(new View.OnClickListener() {

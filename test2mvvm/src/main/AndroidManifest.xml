@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestMVVM">
         <activity
-            android:name=".Test2Activity"
+            android:name=".Test2MVVMActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +29,7 @@
                 android:value="" />
         </activity>
         <activity android:name=".test1.Test1_Activity" />
+        <activity android:name=".test2.Test2_Activity"/>
     </application>
 
 </manifest>
