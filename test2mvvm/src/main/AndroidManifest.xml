@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,6 +17,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestMVVM">
         <activity
+            android:name=".Test"
+            android:exported="false"
+            android:label="@string/title_activity_test">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Test2MVVMActivity"
             android:exported="true">
             <intent-filter>
@@ -29,7 +38,21 @@
                 android:value="" />
         </activity>
         <activity android:name=".test1.Test1_Activity" />
-        <activity android:name=".test2.Test2_Activity"/>
+        <activity android:name=".test2.Test2_Activity" />
+        <activity android:name=".login.Login_Activity" />
+        <activity
+            android:name=".test3.Test3_Activity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name=".test3.SearchActivity" />
+        <activity
+            android:name=".test3.TwoWayActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name=".test3.Test_retrofit_Activity" />
+        <activity android:name=".retrofit2.Test2_Activity2" />
+        <activity android:name=".test4.Test4_Activity" />
+        <activity android:name=".test4.Test"/>
+        <activity android:name=".test4.fragment3.RecyclerViewActivity"/>
+        <activity android:name=".test5.Test5_Activity"/>
     </application>
 
 </manifest>

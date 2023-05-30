@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="updateViewModel"
+            type="com.android.test2mvvm.test5.fragment7.update.Update_ViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/test5_fragment7_update_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="修改pwd"
+            android:text="@={updateViewModel.userMutableLiveData.account}"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/test5_fragment7_update_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="修改pwd"
+            android:text="@={updateViewModel.userMutableLiveData.pwd}"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/test5_fragment7_update_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="修改昵称"
+            android:text="@={updateViewModel.userMutableLiveData.nickname}"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/test5_fragment7_update_save_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="保存资料"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/test5_fragment7_update_quit_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="退出,返回mian"
+            android:textSize="30sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <data>
+
+        <variable
+            name="adapter"
+            type="com.android.test2mvvm.test1.fragment5.MvvmCommonAdapter" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/test1_room_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="显示数据:"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/test1_room_btn_rxjava"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray"
+            android:textColor="@color/red"
+            android:text="rxjava测试"
+            android:textSize="30sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/test1_fragment5_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adapter="@{adapter}" />
+
+    </LinearLayout>
+</layout>

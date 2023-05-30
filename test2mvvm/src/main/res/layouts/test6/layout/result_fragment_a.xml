@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <data>
 
         <variable
-            name="adapter"
-            type="com.android.test2mvvm.test1.fragment5.MvvmCommonAdapter" />
-
+            name="dataab"
+            type="com.android.test2mvvm.test6.fragments.result.ViewModel_AB" />
     </data>
 
     <LinearLayout
@@ -16,24 +14,17 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/test1_room_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="显示数据:"
-            android:textSize="30sp" />
-
-        <Button
-            android:id="@+id/test1_room_btn_rxjava"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="rxjava测试"
+            android:text="@{dataab.num.toString()}"
             android:textSize="30sp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/test1_fragment5_recyclerView"
+            android:id="@+id/result_fragment_a_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:adapter="@{adapter}" />
+            android:layout_marginBottom="5sp" />
+
 
     </LinearLayout>
 </layout>

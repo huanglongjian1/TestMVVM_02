@@ -10,7 +10,7 @@ public class User extends BaseObservable {
     private String nickName;
     private String userface;
     private String userName;
-    private String age;
+    public String age;
 
     public User(String nickName, String userface, String userName, String age) {
         this.nickName = nickName;

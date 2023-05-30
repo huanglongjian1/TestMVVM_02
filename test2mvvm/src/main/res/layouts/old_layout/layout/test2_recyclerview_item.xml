@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.android.test2mvvm.test2.adapter.Rv_Bean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/test2_ShapeableImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:recyclerview_img_url="@{data.imageUrl}"
+            app:shapeAppearanceOverlay="@style/rocketImageStyle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.description}"
+            android:textSize="20sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.user_id}"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+</layout>

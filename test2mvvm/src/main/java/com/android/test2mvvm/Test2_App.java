@@ -1,6 +1,7 @@
 package com.android.test2mvvm;
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -15,10 +16,16 @@ import dagger.hilt.android.HiltAndroidApp;
 @HiltAndroidApp
 public class Test2_App extends Application {
     public static boolean isTest = true;
+    public static Context context;
+
+    public static Context getInstance() {
+        return context;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
+        context = this;
         AppCompatDelegate.setDefaultNightMode(
                 AppCompatDelegate.MODE_NIGHT_NO);
 

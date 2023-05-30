@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.android.test2mvvm.test2.Test2_ViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/test2_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="hello"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/test2_btn_bing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="必应"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/test2_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20sp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/test2_ShapeableImageView"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            app:shapeAppearanceOverlay="@style/rocketImageStyle"
+            app:shapeableimageviewurl="@{model.zhuangbi_beanMutableLiveData.get(0).image_url}" />
+
+        <Button
+            android:id="@+id/test2_change_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="切换adapter"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/test2_show_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="测试隐藏"
+            android:textSize="20sp"
+            android:visibility="@{model.visibility?View.VISIBLE:View.GONE}" />
+
+        <Button
+            android:id="@+id/test2_get12306_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="切换fragment"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/test2_12306_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ViewStub
+            android:id="@+id/test2_view_stub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inflatedId="@+id/test2_view_stub_layout"
+            android:layout="@layout/viewstub_layout" />
+
+        <FrameLayout
+            android:id="@+id/test2_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.ogaclejapan.smarttablayout.SmartTabLayout
+            android:id="@+id/test2_viewpage_smartTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/test2_viewpage"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tl_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/test2_viewpage2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/test2_viewpage2_tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/test2_tab_viewpage2_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/test2_viewpage2_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/test2_recyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</layout>

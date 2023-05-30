@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_navigation"
+    app:startDestination="@id/login_fragment">
+
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="com.android.test2mvvm.test5.fragment7.login.Login_Fragment"
+        android:label="@string/login"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_login_to_register"
+            app:destination="@id/register_fragment" />
+        <action
+            android:id="@+id/action_login_to_main"
+            app:destination="@id/main_fragment" />
+        <action
+            android:id="@+id/login_to_room"
+            app:destination="@id/test_room_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/register_fragment"
+        android:name="com.android.test2mvvm.test5.fragment7.register.Register_Fragment"
+        android:label="@string/register"
+        tools:layout="@layout/register_fragment">
+        <action
+            android:id="@+id/action_register_to_login"
+            app:destination="@id/login_fragment" />
+
+        <deepLink app:uri="http://register/" />
+    </fragment>
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="com.android.test2mvvm.test5.fragment7.main.Main_Fragment"
+        android:label="@string/main"
+        tools:layout="@layout/main_fragment">
+        <action
+            android:id="@+id/action_main_to_login"
+            app:destination="@id/login_fragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/update_fragment"
+        android:name="com.android.test2mvvm.test5.fragment7.update.Update_Fragment"
+        android:label="@string/update"
+        tools:layout="@layout/update_fragment">
+        <action
+            android:id="@+id/action_update_to_main"
+            app:destination="@id/main_fragment"
+            app:popUpTo="@id/login_fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/test_room_fragment"
+        android:name="com.android.test2mvvm.test5.fragment7.testroom.Test_Fragment"
+        android:label="test_room"
+        tools:layout="@layout/test5_fragment5">
+
+    </fragment>
+    <fragment
+        android:id="@+id/dialog_fragment"
+        android:name="com.android.test2mvvm.util.view.MyDialogFragment"
+        android:label="dialog"
+        tools:layout="@layout/custom_sload_layout">
+
+    </fragment>
+
+</navigation>

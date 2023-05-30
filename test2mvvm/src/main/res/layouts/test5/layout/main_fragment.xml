@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/test5_fragment_main_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/test5_fragment_quit_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="退出登录"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/test5_fragment_clear_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="清除账号"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/test5_fragment_update_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="修改资料"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/test5_fragment_dialog_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="提示对话框"
+                android:textSize="30sp" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
+
+</layout>
