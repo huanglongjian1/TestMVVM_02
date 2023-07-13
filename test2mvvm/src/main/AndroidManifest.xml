@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".Test2_App"
@@ -16,6 +18,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestMVVM">
+        <provider
+            android:name=".test5.fragment6.cp.TestProvider"
+            android:authorities="test2mvvm.testprovider"
+            android:exported="true"
+            tools:node="merge">
+            <meta-data
+                android:name="com.android.test2mvvm.test5.fragment6.startup.SDKInitializer"
+                android:value="androidx.startup" />
+        </provider>
+
         <activity
             android:name=".Test"
             android:exported="false"
@@ -49,10 +61,37 @@
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".test3.Test_retrofit_Activity" />
         <activity android:name=".retrofit2.Test2_Activity2" />
-        <activity android:name=".test4.Test4_Activity" />
-        <activity android:name=".test4.Test"/>
-        <activity android:name=".test4.fragment3.RecyclerViewActivity"/>
-        <activity android:name=".test5.Test5_Activity"/>
-    </application>
+        <activity
+            android:name=".test4.Test4_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".test4.Test"
+            android:exported="true" />
+        <activity android:name=".test4.fragment3.RecyclerViewActivity" />
+        <activity
+            android:name=".test5.Test5_Activity"
+            android:exported="true" >
+            <nav-graph android:value="@navigation/fragment7"/>
+        </activity>
+        <activity android:name=".test6.Test6_Activity"/>
 
+        <service android:name=".test5.fragment6.TestAppWidgetRemoteViewsService" />
+
+        <receiver
+            android:name=".test5.fragment6.TestAppWidgetRemoteViews"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/custom_app_widget" />
+
+        </receiver>
+    </application>
+    <permission
+        android:name="test2mvvm.PROVIDER"
+        android:protectionLevel="normal" />
 </manifest>

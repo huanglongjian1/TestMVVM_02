@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/one"
+        android:icon="@android:drawable/star_big_on"
+        android:title="首页" />
+    <item
+        android:id="@+id/two"
+        android:icon="@android:drawable/ic_menu_mylocation"
+        android:title="全部服务" />
+    <item
+        android:id="@+id/three"
+        android:icon="@android:drawable/ic_menu_mylocation"
+        android:title="第三个" />
+    <item
+        android:id="@+id/four"
+        android:icon="@android:drawable/ic_menu_mylocation"
+        android:title="第四个" />
+</menu>

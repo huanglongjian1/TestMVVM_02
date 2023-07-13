@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="adapter"
+            type="com.android.test2mvvm.test5.fragment3.Fragment3_Adapter" />
+
+        <variable
+            name="viewmodel"
+            type="com.android.test2mvvm.test5.fragment3.Fragment3_ViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/test5_fragment3_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="test5_fragment3"
+            android:textSize="20sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/test5_fragment3_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adapter="@{adapter}" />
+
+    </LinearLayout>
+</layout>

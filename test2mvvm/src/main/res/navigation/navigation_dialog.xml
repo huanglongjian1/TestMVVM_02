@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/demo_nav"
+    app:startDestination="@id/one">
+
+
+    <fragment
+        android:id="@+id/one"
+        android:name="com.android.test2mvvm.test4.MyFragment"
+        android:label="BlankFragment"
+        tools:layout="@layout/test2_frament1">
+        <action
+            android:id="@+id/action_one_to_two"
+            app:destination="@id/two" />
+        <action
+            android:id="@+id/action_one_to_three"
+            app:destination="@id/three" />
+        <action
+            android:id="@+id/action_one_to_paging3"
+            app:destination="@id/paging3_fragment" />
+        <argument
+            android:name="key"
+            android:defaultValue="hello"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/two"
+        android:name="com.android.test2mvvm.test4.base.MyFragment2"
+        android:label="BlankFragmentb"
+        tools:layout="@layout/test1_fragment8"></fragment>
+    <fragment
+        android:id="@+id/three"
+        android:name="com.android.test2mvvm.test4.fragment1.Test4_fragment1"
+        android:label="BlankFragment"
+        tools:layout="@layout/test2_frament1">
+        />
+    </fragment>
+    <fragment
+        android:id="@+id/four"
+        android:name="com.android.test2mvvm.test4.fragment2.Test4_Fragment2"
+        android:label="BlankFragment"
+        tools:layout="@layout/test2_frament1">
+        />
+    </fragment>
+    <fragment
+        android:id="@+id/paging3_fragment"
+        android:name="com.android.test2mvvm.test6.fragments.paging3.Paging3_Fragment"
+        android:label="paging3_fragment"
+        tools:layout="@layout/paging3_fragment">
+
+    </fragment>
+
+
+</navigation>

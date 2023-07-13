@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/test_fragment_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="test_fragment"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/test_fragment_reset_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="重置random位置"
+            android:textSize="30sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/test_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <com.android.test2mvvm.test5.fragment3.headandtail_rv.WrapRecyclerView
+            android:id="@+id/test5_adapter_wrap_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

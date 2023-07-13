@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="stumodel"
+            type="com.android.test2mvvm.test5.bean.UserViewModel" />
+
+        <variable
+            name="myadapter"
+            type="com.android.test2mvvm.test5.fragment1.MyAdapter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/test5_fragment_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{stumodel.observableField.stu_name}"
+            android:textSize="30sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/test5_fragment1_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adapter="@{myadapter}" />
+
+    </LinearLayout>
+</layout>

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -131,7 +132,7 @@ public class LoginFragment extends Fragment {
         // TODO : initiate successful logged in experience
         if (getContext() != null && getContext().getApplicationContext() != null) {
             Toast.makeText(getContext().getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-            Loge.e(getContext()+"-------------");
+            Loge.e(getContext() + "-------------");
         }
     }
 

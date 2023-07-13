@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="u"
+            type="com.android.test2mvvm.test4.fragment2.User" />
+
+        <variable
+            name="adapter"
+            type="com.android.test2mvvm.test4.fragment1.Recycler_Adapter" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/test4_fragment1_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="没有东西显示"
+            android:textSize="30sp" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/test4_fragment1_SwipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.android.test2mvvm.test4.fragment1.MyRecyclerView
+                android:id="@+id/test4_fragment1_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adapter="@{adapter}" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+</layout>

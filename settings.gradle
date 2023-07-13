@@ -16,3 +16,4 @@ rootProject.name = "TestMVVM"
 include ':app'
 include ':testmvvm'
 include ':test2mvvm'
+include ':mykotlin'

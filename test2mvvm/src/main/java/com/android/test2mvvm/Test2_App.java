@@ -3,28 +3,32 @@ package com.android.test2mvvm;
 import android.app.Application;
 import android.content.Context;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.databinding.DataBindingUtil;
+import androidx.startup.AppInitializer;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.test2mvvm.test1.fragment10.binding.ProductionComponent;
-import com.android.test2mvvm.util.Loge;
+import com.android.test2mvvm.test5.fragment6.cp.TestProvider;
+import com.android.test2mvvm.test5.fragment6.startup.SDKInitializer;
+import com.android.test2mvvm.test5.fragment7.dao.AppDatabase;
 
 import dagger.hilt.android.HiltAndroidApp;
 
 @HiltAndroidApp
 public class Test2_App extends Application {
     public static boolean isTest = true;
-    public static Context context;
-
-    public static Context getInstance() {
+    public static Application context;
+    //数据库
+    public static AppDatabase db;
+    public static Application getInstance() {
         return context;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
+        db=AppDatabase.getInstance(this);
         context = this;
         AppCompatDelegate.setDefaultNightMode(
                 AppCompatDelegate.MODE_NIGHT_NO);
@@ -38,7 +42,9 @@ public class Test2_App extends Application {
         DataBindingUtil.setDefaultComponent(new ProductionComponent());
 
     }
-
+    public static AppDatabase getDb(){
+        return db;
+    }
     public boolean isDebug() {
         return BuildConfig.DEBUG;
     }

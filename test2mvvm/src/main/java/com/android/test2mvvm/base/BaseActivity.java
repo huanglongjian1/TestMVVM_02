@@ -16,6 +16,7 @@ import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.android.test2mvvm.login.Login_Activity;
+import com.android.test2mvvm.test5.fragment6.MyPresent;
 import com.android.test2mvvm.util.ActivityManager;
 import com.android.test2mvvm.util.Loge;
 
@@ -42,9 +43,12 @@ public abstract class BaseActivity<VM extends BaseViewModel, VDB extends ViewDat
     protected VDB binding;
     protected ProgressDialog mProgressDialog;
 
+    protected MyPresent myPresent;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getLifecycle().addObserver(new MyPresent()); //添加监听对象
 
         setTitle(this.getClass().getSimpleName());
         // setContentView(getContentViewId());

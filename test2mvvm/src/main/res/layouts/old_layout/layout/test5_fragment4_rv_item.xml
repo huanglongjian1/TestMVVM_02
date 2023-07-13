@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="person"
+            type="com.android.test2mvvm.test5.fragment4.bean.Person" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/test5_fragment4_tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@{person.name}"
+            android:textSize="30sp" />
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="40sp"
+            android:background="@color/black" />
+
+        <TextView
+            android:id="@+id/test5_fragment4_tv_psw"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@{person.psw}"
+            android:textSize="30sp" />
+    </LinearLayout>
+</layout>

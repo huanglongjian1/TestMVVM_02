@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:lineSpacingMultiplier="2"
+                android:padding="16dp"
+                android:text="@string/textContent" />
+            <!-- android:lineSpacingExtra，设置行间距，取值范围：正数、负数和0，正数表示增加相应的大小，负数表示减少相应的大小，0表示无变化。-->
+            <!-- android:lineSpacingMultiplier，设置行间距的倍数，取值范围：浮点数，如果值大于1.0表示增加行间距，如果值小于1.0表示减少行间距，等于1.0时表示无变化。-->
+            <!-- android:layout_margin="16dp"，TextView距离上下左右边框的距离-->
+            <!-- android:padding="16dp"，TextView中的文本内容距离TextView上下左右边界的距离-->
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/test2_AppBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/gray"
+                android:theme="@style/fhy_action"
+                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed|snap"
+                app:title="collapsing title">
+
+                <ImageView
+                    android:id="@+id/test3_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.5" />
+                <!-- 去掉了Toolbar的背景设置 -->
+                <!--                <androidx.appcompat.widget.Toolbar-->
+                <!--                    android:id="@+id/toolbar"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="?attr/actionBarSize"-->
+                <!--                    app:layout_collapseMode="parallax"-->
+                <!--                    app:popupTheme="@style/ToolbarPopupTheme"-->
+                <!--                    app:title="我用什么把你留住" />-->
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

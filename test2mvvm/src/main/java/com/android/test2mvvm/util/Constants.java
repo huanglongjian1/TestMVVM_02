@@ -11,4 +11,5 @@ public class Constants {
     public static final String TEST2_ACTIVITY2 = "/test2mvvm/Test2_Activity2";
     public static final String TEST4_ACTIVITY = "/test2mvvm/Test4_Activity";
     public static final String TEST5_ACTIVITY = "/test2mvvm/Test5_Activity";
+    public static final String TEST6_ACTIVITY = "/test2mvvm/Test6_Activity";
 }

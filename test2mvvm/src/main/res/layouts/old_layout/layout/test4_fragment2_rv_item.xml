@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.android.test2mvvm.test4.fragment2.User" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/test4_fragment2_recyclerView_tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:text="@{user.name}"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/test4_fragment2_recyclerView_tv_password"
+            android:layout_width="match_parent"
+            android:textColor="@color/red"
+            android:layout_height="wrap_content"
+            android:text="@{user.password}"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+</layout>

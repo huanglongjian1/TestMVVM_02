@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/test4_fragment3_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="增加"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/test4_fragment3_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="显示room"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/test4_fragment3_dialog_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="test_对话框"
+            android:textSize="30sp" />
+
+
+    </LinearLayout>
+</layout>

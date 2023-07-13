@@ -1,0 +1,36 @@
+package com.android.test2mvvm.test5.fragment3.test;
+
+import androidx.recyclerview.widget.DiffUtil;
+
+import java.util.ArrayList;
+
+public class MyCallback extends DiffUtil.Callback {
+    private ArrayList<Student> old_students, new_students;
+
+    MyCallback(ArrayList<Student> data, ArrayList<Student> students) {
+        this.old_students = data;
+        this.new_students = students;
+    }
+
+    @Override
+    public int getOldListSize() {
+        return old_students.size();
+    }
+
+    @Override
+    public int getNewListSize() {
+        return new_students.size();
+    }
+
+    // 判断Item是否已经存在
+    @Override
+    public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
+        return old_students.get(oldItemPosition).getNum() == new_students.get(newItemPosition).getNum();
+    }
+
+    // 如果Item已经存在则会调用此方法，判断Item的内容是否一致
+    @Override
+    public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+        return old_students.get(oldItemPosition).getName().equals(new_students.get(newItemPosition).getName());
+    }
+}

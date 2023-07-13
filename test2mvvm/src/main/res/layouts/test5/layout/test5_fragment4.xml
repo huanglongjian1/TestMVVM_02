@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="adapter"
+            type="com.android.test2mvvm.test5.fragment4.adapter.Person_RV_Adapter" />
+
+        <variable
+            name="viewmodel"
+            type="com.android.test2mvvm.test5.fragment4.Fragment4_ViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/test5_fragment4_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="test5_fragment4"
+            android:textSize="30sp" />
+        <TextView
+            android:id="@+id/test5_change_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="切换adapter"
+            android:textSize="30sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/test5_fragment4_rv"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:bind="@{viewmodel.personObservableArrayList}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/wrap_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

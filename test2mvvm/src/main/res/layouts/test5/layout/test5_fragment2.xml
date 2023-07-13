@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="adaper"
+            type="com.android.test2mvvm.test5.fragment2.MyRecyclerView_Adapter" />
+
+        <variable
+            name="model"
+            type="com.android.test2mvvm.test5.fragment2.Fragment2_ViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/test5_fragment2_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/test5_fragment2_add5_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="批量添加3条数据"
+            android:textSize="20sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/test5_fragment2_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adapter="@{adaper}" />
+
+    </LinearLayout>
+</layout>

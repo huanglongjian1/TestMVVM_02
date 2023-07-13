@@ -23,7 +23,7 @@ public class Test2MVVMActivity extends AppCompatActivity {
         findViewById(R.id.main_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build(Constants.TEST5_ACTIVITY).navigation();
+                ARouter.getInstance().build(Constants.TEST6_ACTIVITY).navigation();
                 // startActivity(new Intent(Test2MVVMActivity.this, Test.class));
                 //  startActivity(new Intent(Test2MVVMActivity.this, RecyclerViewActivity.class));
             }
