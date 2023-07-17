@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -66,5 +67,11 @@ public class Dialog_Fragment extends BaseFragment<DialogFragmentBinding> {
     @Override
     protected void initData() {
 
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+      //  Loge.e(getView().toString()+"============================");
     }
 }

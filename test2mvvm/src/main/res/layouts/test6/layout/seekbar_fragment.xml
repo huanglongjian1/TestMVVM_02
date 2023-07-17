@@ -21,6 +21,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <EditText
+            android:id="@+id/edit_test6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入:" />
+
         <TextView
             android:id="@+id/seekbar_fragment_tv_test6"
             android:layout_width="match_parent"

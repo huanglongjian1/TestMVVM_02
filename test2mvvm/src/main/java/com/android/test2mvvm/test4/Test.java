@@ -2,15 +2,15 @@ package com.android.test2mvvm.test4;
 
 import android.os.Bundle;
 
-import com.android.test2mvvm.R;
-import com.android.test2mvvm.databinding.ActivityTestBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.android.test2mvvm.R;
+import com.android.test2mvvm.databinding.ActivityTestBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Test extends AppCompatActivity {
 

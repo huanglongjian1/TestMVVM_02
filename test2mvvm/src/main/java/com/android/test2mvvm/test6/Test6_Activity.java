@@ -1,5 +1,7 @@
 package com.android.test2mvvm.test6;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,6 +9,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -17,6 +20,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentOnAttachListener;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.navigation.NavController;
@@ -29,6 +34,9 @@ import com.android.test2mvvm.R;
 import com.android.test2mvvm.base.BaseActivity;
 import com.android.test2mvvm.databinding.Test6ActivityBinding;
 import com.android.test2mvvm.test6.adapter.MyViewPager2Adapter;
+import com.android.test2mvvm.test6.basebottomsheet.test.BottomBehavior;
+import com.android.test2mvvm.test6.basebottomsheet.test.TestBehavior;
+import com.android.test2mvvm.test6.basebottomsheet.test.TestBehavior_02;
 import com.android.test2mvvm.test6.fragments.Dialog_Fragment;
 import com.android.test2mvvm.test6.fragments.Fragment07;
 import com.android.test2mvvm.test6.fragments.Mobile_Fragment;
@@ -37,12 +45,16 @@ import com.android.test2mvvm.test6.fragments.newinstance.BlankFragment;
 import com.android.test2mvvm.test6.fragments.newinstance.ItemFragment;
 import com.android.test2mvvm.test6.fragments.newinstance.test02.FullscreenFragment;
 import com.android.test2mvvm.test6.fragments.newinstance.test04.SettingsFragment;
+import com.android.test2mvvm.test6.fragments.newinstance.test05.Text1Fm;
+import com.android.test2mvvm.test6.fragments.onbackpressed.OnBack_Fragment;
 import com.android.test2mvvm.test6.fragments.result.Result_Fragment;
 import com.android.test2mvvm.test6.fragments.result.Result_Fragment_02;
 import com.android.test2mvvm.test6.fragments.result.fragmentb.Result_Fragment_03;
 import com.android.test2mvvm.test6.fragments.seekbar_fragment.SeekBar_Fragment;
+import com.android.test2mvvm.test6.fragments.test_fragment.Test_Fragment;
 import com.android.test2mvvm.util.Constants;
 import com.android.test2mvvm.util.Loge;
+import com.android.test2mvvm.util.onbackpressed.BackHandlerHelper;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -62,6 +74,11 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
         return R.layout.test6_activity;
     }
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getSupportFragmentManager().registerFragmentLifecycleCallbacks(mFragmentLifecycleCallbacks,true);
+    }
 
     @Override
     protected void processLogic() {
@@ -69,6 +86,15 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         List<Fragment> fragmentList = new ArrayList<>();
+
+
+        fragmentList.add(Test_Fragment.newInstance("测试fragmentAAA"));
+        fragmentList.add(new TestBehavior_02());
+        fragmentList.add(new BottomBehavior());
+        Bundle bundle = new Bundle();
+        bundle.putString("new", "新名字");
+        fragmentList.add(Result_Fragment_03.newInstance(bundle));
+        fragmentList.add(new TestBehavior());
         fragmentList.add(new Mobile_Fragment());
         fragmentList.add(new Dialog_Fragment());
         fragmentList.add(new Fragment07());
@@ -78,11 +104,8 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
         fragmentList.add(BlankFragment.newInstance("blank", "fragment"));
         fragmentList.add(ItemFragment.newInstance(20));
         fragmentList.add(new FullscreenFragment());
-
-        Bundle bundle = new Bundle();
-        bundle.putString("new", "新名字");
-        fragmentList.add(Result_Fragment_03.newInstance(bundle));
         fragmentList.add(new SettingsFragment());
+        fragmentList.add(new OnBack_Fragment());
 
 
         MyViewPager2Adapter myViewPager2Adapter = new MyViewPager2Adapter(this, fragmentList);
@@ -95,7 +118,7 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
                 tab.setText(fragmentList.get(position).getClass().getSimpleName().toLowerCase());
             }
         }).attach();
-
+        binding.viewpager2ActivityTest6.setOffscreenPageLimit(1);
         binding.test6ActivityTv.setOnClickListener(new View.OnClickListener() {
             int anInt = 0;
 
@@ -177,6 +200,7 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
 
     @Override
     public void onBackPressed() {
+        BackHandlerHelper.handleBackPress(this);
         //  super.onBackPressed();
         Loge.e(getSupportFragmentManager().getBackStackEntryCount() + "---");
         if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
@@ -184,10 +208,24 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
         } else {
             super.onBackPressed();
         }
+
     }
 
     @Override
     protected void registerViewModel() {
+        getSupportFragmentManager().registerFragmentLifecycleCallbacks(new FragmentManager.FragmentLifecycleCallbacks() {
+            @Override
+            public void onFragmentPreAttached(@NonNull FragmentManager fm, @NonNull Fragment f, @NonNull Context context) {
+                super.onFragmentPreAttached(fm, f, context);
+                // Loge.e(fm.toString() + "------" + f.toString() + "---------" + context.toString());
+            }
+        }, true);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        getSupportFragmentManager().unregisterFragmentLifecycleCallbacks(mFragmentLifecycleCallbacks);
 
     }
 
@@ -278,6 +316,14 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
         Loge.e(fragment.getClass().getSimpleName() + ":" + message);
     }
 
+    public class FragmentLifecycle_02 implements DefaultLifecycleObserver {
+        @Override
+        public void onResume(@NonNull LifecycleOwner owner) {
+            DefaultLifecycleObserver.super.onResume(owner);
+            Loge.e(owner.toString() + "---onResume--");
+        }
+    }
+
     public class FragmentLifecycle implements DefaultLifecycleObserver {
         @Override
         public void onResume(@NonNull LifecycleOwner owner) {
@@ -303,4 +349,90 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
             NavigationUI.setupActionBarWithNavController(Test6_Activity.this, navController1);
         }
     }
+    private FragmentManager.FragmentLifecycleCallbacks mFragmentLifecycleCallbacks = new FragmentManager.FragmentLifecycleCallbacks() {
+        @Override
+        public void onFragmentPreAttached(@NonNull FragmentManager fm, @NonNull Fragment f, @NonNull Context context) {
+            super.onFragmentPreAttached(fm, f, context);
+            Log.i(TAG, "onFragmentPreAttached: "+f.getClass().getSimpleName());
+        }
+
+        @Override
+        public void onFragmentActivityCreated(@NonNull FragmentManager fm, @NonNull Fragment f, @Nullable Bundle savedInstanceState) {
+            super.onFragmentActivityCreated(fm, f, savedInstanceState);
+            Log.i(TAG, "onFragmentActivityCreated: "+f.getClass().getSimpleName());
+        }
+
+        @Override
+        public void onFragmentAttached(@NonNull FragmentManager fm, @NonNull Fragment f, @NonNull Context context) {
+            super.onFragmentAttached(fm, f, context);
+            Log.i(TAG, "onFragmentAttached: "+f.getClass().getSimpleName());
+        }
+
+        @Override
+        public void onFragmentPreCreated(@NonNull FragmentManager fm, @NonNull Fragment f, @Nullable Bundle savedInstanceState) {
+            super.onFragmentPreCreated(fm, f, savedInstanceState);
+            Log.i(TAG, "onFragmentPreCreated: "+f.getClass().getSimpleName());
+        }
+
+        @Override
+        public void onFragmentCreated(@NonNull FragmentManager fm, @NonNull Fragment f, @Nullable Bundle savedInstanceState) {
+            super.onFragmentCreated(fm, f, savedInstanceState);
+            Log.i(TAG, "onFragmentCreated: "+f.getClass().getSimpleName());
+        }
+
+        @Override
+        public void onFragmentViewCreated(@NonNull FragmentManager fm, @NonNull Fragment f, @NonNull View v, @Nullable Bundle savedInstanceState) {
+            super.onFragmentViewCreated(fm, f, v, savedInstanceState);
+            Log.i(TAG, "onFragmentViewCreated: "+f.getClass().getSimpleName());
+        }
+
+        @Override
+        public void onFragmentStarted(@NonNull FragmentManager fm, @NonNull Fragment f) {
+            super.onFragmentStarted(fm, f);
+            Log.i(TAG, "onFragmentStarted: "+f.getClass().getSimpleName());
+        }
+
+        @Override
+        public void onFragmentResumed(@NonNull FragmentManager fm, @NonNull Fragment f) {
+            super.onFragmentResumed(fm, f);
+            Log.i(TAG, "onFragmentResumed: "+f.getClass().getSimpleName());
+        }
+
+        @Override
+        public void onFragmentPaused(@NonNull FragmentManager fm, @NonNull Fragment f) {
+            super.onFragmentPaused(fm, f);
+            Log.i(TAG, "onFragmentPaused: "+f.getClass().getSimpleName());
+        }
+
+        @Override
+        public void onFragmentStopped(@NonNull FragmentManager fm, @NonNull Fragment f) {
+            super.onFragmentStopped(fm, f);
+            Log.i(TAG, "onFragmentStopped: "+f.getClass().getSimpleName());
+        }
+
+        @Override
+        public void onFragmentSaveInstanceState(@NonNull FragmentManager fm, @NonNull Fragment f, @NonNull Bundle outState) {
+            super.onFragmentSaveInstanceState(fm, f, outState);
+            Log.i(TAG, "onFragmentSaveInstanceState: "+f.getClass().getSimpleName());
+        }
+
+        @Override
+        public void onFragmentViewDestroyed(@NonNull FragmentManager fm, @NonNull Fragment f) {
+            super.onFragmentViewDestroyed(fm, f);
+            Log.i(TAG, "onFragmentViewDestroyed: "+f.getClass().getSimpleName());
+        }
+
+        @Override
+        public void onFragmentDestroyed(@NonNull FragmentManager fm, @NonNull Fragment f) {
+            super.onFragmentDestroyed(fm, f);
+            Log.i(TAG, "onFragmentDestroyed: "+f.getClass().getSimpleName());
+        }
+
+        @Override
+        public void onFragmentDetached(@NonNull FragmentManager fm, @NonNull Fragment f) {
+            super.onFragmentDetached(fm, f);
+            Log.i(TAG, "onFragmentDetached: "+f.getClass().getSimpleName());
+        }
+    };
+
 }
