@@ -61,4 +61,5 @@ public class MyDialogFragment extends DialogFragment {
                 }).create();
         return dialog;
     }
+
 }

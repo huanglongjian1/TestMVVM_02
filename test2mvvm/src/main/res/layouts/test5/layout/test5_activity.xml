@@ -98,13 +98,13 @@
             android:id="@+id/nav_host_fragment_activity_test5"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="1dp"
             app:defaultNavHost="true" />
 
         <FrameLayout
             android:id="@+id/test5_fragment"
             android:layout_width="match_parent"
-            android:layout_height="1dp" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </layout>

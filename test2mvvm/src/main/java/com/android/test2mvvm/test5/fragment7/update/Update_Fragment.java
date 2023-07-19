@@ -33,6 +33,8 @@ public class Update_Fragment extends BaseFragment<UpdateFragmentBinding> {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(getView()).navigate(R.id.action_update_to_main);
+              //  Navigation.findNavController(getView()).getPreviousBackStackEntry().getSavedStateHandle().set("key", "今晚准备打老虎");
+
             }
         });
     }
@@ -53,4 +55,5 @@ public class Update_Fragment extends BaseFragment<UpdateFragmentBinding> {
             }
         });
     }
+
 }

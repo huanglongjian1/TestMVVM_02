@@ -1,16 +1,24 @@
 package com.android.test2mvvm.test5.fragment7.main;
 
+import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.android.test2mvvm.R;
 import com.android.test2mvvm.databinding.MainFragmentBinding;
 import com.android.test2mvvm.test4.base.BaseFragment;
 import com.android.test2mvvm.test5.fragment7.bean.User;
 import com.android.test2mvvm.test5.fragment7.util.Constant;
+import com.android.test2mvvm.util.Loge;
 import com.android.test2mvvm.util.SharedPreferencesUtil;
 
 import java.util.List;
@@ -63,4 +71,22 @@ public class Main_Fragment extends BaseFragment<MainFragmentBinding> {
         });
 
     }
+
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//        NavController navController = NavHostFragment.findNavController(this);
+//        // 获取当前NavBackStackEntry的SavedStateHandle的LiveData
+//        MutableLiveData<String> liveData = navController.getCurrentBackStackEntry()
+//                .getSavedStateHandle()
+//                .getLiveData("key");
+//        liveData.observe(getViewLifecycleOwner(), new Observer<String>() {
+//            @Override
+//            public void onChanged(String result) {
+//                // 处理监听到的数据
+//                Toast.makeText(getContext(), "result: " + result, Toast.LENGTH_SHORT).show();
+//                Loge.e(result);
+//            }
+//        });
+//    }
 }

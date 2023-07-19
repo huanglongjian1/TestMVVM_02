@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".Test2_App"
@@ -17,8 +19,8 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.TestMVVM">
+        android:theme="@style/Theme.TestMVVM"
+        android:usesCleartextTraffic="true">
         <provider
             android:name=".test5.fragment6.cp.TestProvider"
             android:authorities="test2mvvm.testprovider"
@@ -29,6 +31,7 @@
                 android:value="androidx.startup" />
         </provider>
 
+        <activity android:name=".test6.fragments.newinstance.test07.TestActivity" />
         <activity
             android:name=".Test"
             android:exported="false"
@@ -71,10 +74,10 @@
         <activity android:name=".test4.fragment3.RecyclerViewActivity" />
         <activity
             android:name=".test5.Test5_Activity"
-            android:exported="true" >
-            <nav-graph android:value="@navigation/fragment7"/>
+            android:exported="true">
+            <nav-graph android:value="@navigation/fragment7" />
         </activity>
-        <activity android:name=".test6.Test6_Activity"/>
+        <activity android:name=".test6.Test6_Activity" />
 
         <service android:name=".test5.fragment6.TestAppWidgetRemoteViewsService" />
 

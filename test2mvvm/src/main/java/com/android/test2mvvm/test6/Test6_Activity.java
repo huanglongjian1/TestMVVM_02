@@ -2,9 +2,11 @@ package com.android.test2mvvm.test6;
 
 import static android.content.ContentValues.TAG;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,10 +17,13 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentOnAttachListener;
@@ -46,6 +51,7 @@ import com.android.test2mvvm.test6.fragments.newinstance.ItemFragment;
 import com.android.test2mvvm.test6.fragments.newinstance.test02.FullscreenFragment;
 import com.android.test2mvvm.test6.fragments.newinstance.test04.SettingsFragment;
 import com.android.test2mvvm.test6.fragments.newinstance.test05.Text1Fm;
+import com.android.test2mvvm.test6.fragments.newinstance.test07.TestActivity;
 import com.android.test2mvvm.test6.fragments.onbackpressed.OnBack_Fragment;
 import com.android.test2mvvm.test6.fragments.result.Result_Fragment;
 import com.android.test2mvvm.test6.fragments.result.Result_Fragment_02;
@@ -77,13 +83,14 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportFragmentManager().registerFragmentLifecycleCallbacks(mFragmentLifecycleCallbacks,true);
+        getSupportFragmentManager().registerFragmentLifecycleCallbacks(mFragmentLifecycleCallbacks, true);
     }
 
     @Override
     protected void processLogic() {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
         List<Fragment> fragmentList = new ArrayList<>();
 
@@ -231,6 +238,7 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
 
     @Override
     protected void initEvent() {
+        //   startActivity(new Intent(this, TestActivity.class));
 //        binding.test6ActivityTv.setOnClickListener(new View.OnClickListener() {
 //            int anInt = 0;
 //
@@ -349,89 +357,90 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
             NavigationUI.setupActionBarWithNavController(Test6_Activity.this, navController1);
         }
     }
+
     private FragmentManager.FragmentLifecycleCallbacks mFragmentLifecycleCallbacks = new FragmentManager.FragmentLifecycleCallbacks() {
         @Override
         public void onFragmentPreAttached(@NonNull FragmentManager fm, @NonNull Fragment f, @NonNull Context context) {
             super.onFragmentPreAttached(fm, f, context);
-            Log.i(TAG, "onFragmentPreAttached: "+f.getClass().getSimpleName());
+            Log.i(TAG, "onFragmentPreAttached: " + f.getClass().getSimpleName());
         }
 
         @Override
         public void onFragmentActivityCreated(@NonNull FragmentManager fm, @NonNull Fragment f, @Nullable Bundle savedInstanceState) {
             super.onFragmentActivityCreated(fm, f, savedInstanceState);
-            Log.i(TAG, "onFragmentActivityCreated: "+f.getClass().getSimpleName());
+            Log.i(TAG, "onFragmentActivityCreated: " + f.getClass().getSimpleName());
         }
 
         @Override
         public void onFragmentAttached(@NonNull FragmentManager fm, @NonNull Fragment f, @NonNull Context context) {
             super.onFragmentAttached(fm, f, context);
-            Log.i(TAG, "onFragmentAttached: "+f.getClass().getSimpleName());
+            Log.i(TAG, "onFragmentAttached: " + f.getClass().getSimpleName());
         }
 
         @Override
         public void onFragmentPreCreated(@NonNull FragmentManager fm, @NonNull Fragment f, @Nullable Bundle savedInstanceState) {
             super.onFragmentPreCreated(fm, f, savedInstanceState);
-            Log.i(TAG, "onFragmentPreCreated: "+f.getClass().getSimpleName());
+            Log.i(TAG, "onFragmentPreCreated: " + f.getClass().getSimpleName());
         }
 
         @Override
         public void onFragmentCreated(@NonNull FragmentManager fm, @NonNull Fragment f, @Nullable Bundle savedInstanceState) {
             super.onFragmentCreated(fm, f, savedInstanceState);
-            Log.i(TAG, "onFragmentCreated: "+f.getClass().getSimpleName());
+            Log.i(TAG, "onFragmentCreated: " + f.getClass().getSimpleName());
         }
 
         @Override
         public void onFragmentViewCreated(@NonNull FragmentManager fm, @NonNull Fragment f, @NonNull View v, @Nullable Bundle savedInstanceState) {
             super.onFragmentViewCreated(fm, f, v, savedInstanceState);
-            Log.i(TAG, "onFragmentViewCreated: "+f.getClass().getSimpleName());
+            Log.i(TAG, "onFragmentViewCreated: " + f.getClass().getSimpleName());
         }
 
         @Override
         public void onFragmentStarted(@NonNull FragmentManager fm, @NonNull Fragment f) {
             super.onFragmentStarted(fm, f);
-            Log.i(TAG, "onFragmentStarted: "+f.getClass().getSimpleName());
+            Log.i(TAG, "onFragmentStarted: " + f.getClass().getSimpleName());
         }
 
         @Override
         public void onFragmentResumed(@NonNull FragmentManager fm, @NonNull Fragment f) {
             super.onFragmentResumed(fm, f);
-            Log.i(TAG, "onFragmentResumed: "+f.getClass().getSimpleName());
+            Log.i(TAG, "onFragmentResumed: " + f.getClass().getSimpleName());
         }
 
         @Override
         public void onFragmentPaused(@NonNull FragmentManager fm, @NonNull Fragment f) {
             super.onFragmentPaused(fm, f);
-            Log.i(TAG, "onFragmentPaused: "+f.getClass().getSimpleName());
+            Log.i(TAG, "onFragmentPaused: " + f.getClass().getSimpleName());
         }
 
         @Override
         public void onFragmentStopped(@NonNull FragmentManager fm, @NonNull Fragment f) {
             super.onFragmentStopped(fm, f);
-            Log.i(TAG, "onFragmentStopped: "+f.getClass().getSimpleName());
+            Log.i(TAG, "onFragmentStopped: " + f.getClass().getSimpleName());
         }
 
         @Override
         public void onFragmentSaveInstanceState(@NonNull FragmentManager fm, @NonNull Fragment f, @NonNull Bundle outState) {
             super.onFragmentSaveInstanceState(fm, f, outState);
-            Log.i(TAG, "onFragmentSaveInstanceState: "+f.getClass().getSimpleName());
+            Log.i(TAG, "onFragmentSaveInstanceState: " + f.getClass().getSimpleName());
         }
 
         @Override
         public void onFragmentViewDestroyed(@NonNull FragmentManager fm, @NonNull Fragment f) {
             super.onFragmentViewDestroyed(fm, f);
-            Log.i(TAG, "onFragmentViewDestroyed: "+f.getClass().getSimpleName());
+            Log.i(TAG, "onFragmentViewDestroyed: " + f.getClass().getSimpleName());
         }
 
         @Override
         public void onFragmentDestroyed(@NonNull FragmentManager fm, @NonNull Fragment f) {
             super.onFragmentDestroyed(fm, f);
-            Log.i(TAG, "onFragmentDestroyed: "+f.getClass().getSimpleName());
+            Log.i(TAG, "onFragmentDestroyed: " + f.getClass().getSimpleName());
         }
 
         @Override
         public void onFragmentDetached(@NonNull FragmentManager fm, @NonNull Fragment f) {
             super.onFragmentDetached(fm, f);
-            Log.i(TAG, "onFragmentDetached: "+f.getClass().getSimpleName());
+            Log.i(TAG, "onFragmentDetached: " + f.getClass().getSimpleName());
         }
     };
 
