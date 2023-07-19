@@ -2,31 +2,24 @@ package com.android.test2mvvm.test6;
 
 import static android.content.ContentValues.TAG;
 
-import android.Manifest;
+import android.app.ActivityManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentOnAttachListener;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.navigation.NavController;
@@ -36,6 +29,7 @@ import androidx.preference.PreferenceManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.android.test2mvvm.R;
+import com.android.test2mvvm.Test2_App;
 import com.android.test2mvvm.base.BaseActivity;
 import com.android.test2mvvm.databinding.Test6ActivityBinding;
 import com.android.test2mvvm.test6.adapter.MyViewPager2Adapter;
@@ -45,19 +39,17 @@ import com.android.test2mvvm.test6.basebottomsheet.test.TestBehavior_02;
 import com.android.test2mvvm.test6.fragments.Dialog_Fragment;
 import com.android.test2mvvm.test6.fragments.Fragment07;
 import com.android.test2mvvm.test6.fragments.Mobile_Fragment;
-import com.android.test2mvvm.test6.fragments.dialogfragment.MyDialogFragment;
 import com.android.test2mvvm.test6.fragments.newinstance.BlankFragment;
 import com.android.test2mvvm.test6.fragments.newinstance.ItemFragment;
 import com.android.test2mvvm.test6.fragments.newinstance.test02.FullscreenFragment;
 import com.android.test2mvvm.test6.fragments.newinstance.test04.SettingsFragment;
-import com.android.test2mvvm.test6.fragments.newinstance.test05.Text1Fm;
-import com.android.test2mvvm.test6.fragments.newinstance.test07.TestActivity;
 import com.android.test2mvvm.test6.fragments.onbackpressed.OnBack_Fragment;
 import com.android.test2mvvm.test6.fragments.result.Result_Fragment;
 import com.android.test2mvvm.test6.fragments.result.Result_Fragment_02;
 import com.android.test2mvvm.test6.fragments.result.fragmentb.Result_Fragment_03;
 import com.android.test2mvvm.test6.fragments.seekbar_fragment.SeekBar_Fragment;
 import com.android.test2mvvm.test6.fragments.test_fragment.Test_Fragment;
+import com.android.test2mvvm.test6.test_fragment.Test_Fragment_01;
 import com.android.test2mvvm.util.Constants;
 import com.android.test2mvvm.util.Loge;
 import com.android.test2mvvm.util.onbackpressed.BackHandlerHelper;
@@ -67,7 +59,6 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.functions.Action;
@@ -83,7 +74,27 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Loge.e(Test2_App.string+"\\\\\\\\\\\\\\\\");
+        Loge.e(String.valueOf(android.os.Process.myPid()) + ":test6");
         getSupportFragmentManager().registerFragmentLifecycleCallbacks(mFragmentLifecycleCallbacks, true);
+     //   getCurrentProcessNameByActivityManager(this);
+    }
+
+    public static String getCurrentProcessNameByActivityManager(@NonNull Context context) {
+        int pid = android.os.Process.myPid();
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        if (am != null) {
+            List<ActivityManager.RunningAppProcessInfo> runningAppList = am.getRunningAppProcesses();
+            if (runningAppList != null) {
+                for (ActivityManager.RunningAppProcessInfo processInfo : runningAppList) {
+                    if (processInfo.pid == pid) {
+                        Loge.e(processInfo.processName + ":test6");
+                        return processInfo.processName;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     @Override
@@ -94,7 +105,7 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
 
         List<Fragment> fragmentList = new ArrayList<>();
 
-
+        fragmentList.add(Test_Fragment_01.newInstance(null));
         fragmentList.add(Test_Fragment.newInstance("测试fragmentAAA"));
         fragmentList.add(new TestBehavior_02());
         fragmentList.add(new BottomBehavior());
@@ -233,7 +244,8 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
     protected void onDestroy() {
         super.onDestroy();
         getSupportFragmentManager().unregisterFragmentLifecycleCallbacks(mFragmentLifecycleCallbacks);
-
+        Loge.e("退出");
+        System.exit(0);
     }
 
     @Override
