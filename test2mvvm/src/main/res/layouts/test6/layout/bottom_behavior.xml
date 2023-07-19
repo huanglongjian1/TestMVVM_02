@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/testbehavior_02_btn"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="BottomSheet" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/bottom_sheet_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_launcher"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:text="BottomSheet布局" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_launcher"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:text="BottomSheet布局" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_launcher"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:text="BottomSheet布局" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_launcher"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:text="BottomSheet布局" />
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

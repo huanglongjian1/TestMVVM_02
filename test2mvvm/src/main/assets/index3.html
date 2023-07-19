@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<a>-------------</a>
+<a>-------------</a>
+<a>-------------</a>
+<a>-------------</a>
+<a>-------------</a>
+<a>-------------</a>
+<button>传递信息给Native</button>
+<br>
+<button>从Native获取信息</button>
+<div></div>
+<div></div>
+<script>
+        btns = document.querySelectorAll('button');
+        btns[0].onclick = () => {
+            native.webToNative('msg: web to native');
+        };
+        divs=document.querySelectorAll('div');
+        var i=0;
+        btns[1].onclick = () => {
+            let msg = native.nativeToWeb();
+            i++;
+           divs[0].innerText = msg;
+            divs[1].innerText = msg+i;
+        };
+        function clickConfirm() {
+            confirm("Confirm");
+        }
+
+</script>
+<button type="button" onclick="clickConfirm()">Confirm调用</button>
+</body>
+</html>

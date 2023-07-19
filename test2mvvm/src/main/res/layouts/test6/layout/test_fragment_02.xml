@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/welcome" />
+            <TextView
+                android:id="@+id/test6_fragment_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="测试name"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/test6_fragment_btn1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="点击1"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/test6_fragment_btn2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="点击2"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/test6_fragment_btn3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="点击3"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/test6_fragment_btn4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="点击4"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/test6_fragment_btn5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="点击5"
+                android:textSize="30sp" />
+
+
+            <Button
+                android:id="@+id/test6_fragment_btn6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="点击6"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/test6_fragment_btn7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="点击7"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/test6_fragment_btn8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="点击8"
+                android:textSize="30sp" />
+            <FrameLayout
+                android:id="@+id/test6_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <Button
+                android:id="@+id/test6_fragment_btn9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="点击9"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/test6_fragment_btn10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="点击10"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/test6_fragment_btn11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="点击11"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/test6_fragment_btn12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="点击12"
+                android:textSize="30sp" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
