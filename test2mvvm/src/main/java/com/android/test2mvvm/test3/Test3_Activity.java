@@ -1,5 +1,6 @@
 package com.android.test2mvvm.test3;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -228,4 +229,11 @@ public class Test3_Activity extends BaseActivity<Test3_ViewModel, AppbarLayoutBi
     }
 
     private static final String TAG = Test3_Activity.class.getSimpleName();
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+
+    }
 }

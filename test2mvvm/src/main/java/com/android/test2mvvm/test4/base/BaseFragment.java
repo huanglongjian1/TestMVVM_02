@@ -81,6 +81,7 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
         }
     }
 
+
     protected void onDataLazyLoad() {
     }
 

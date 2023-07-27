@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -21,39 +19,67 @@
 
         <Button
             android:id="@+id/test6_fragment_btn"
-            style="@style/Widget.Material3.Button.IconButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/button_selector"
             android:text="点击"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/test6_fragment_btn2"
-            style="@style/Widget.Material3.Button.IconButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/button_selector"
             android:text="点击2"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/test6_fragment_btn3"
-            style="@style/Widget.Material3.Button.IconButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/button_selector"
             android:text="点击3"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/test6_fragment_btn4"
-            style="@style/Widget.Material3.Button.IconButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/button_selector"
             android:text="点击4"
             android:textColor="@color/black"
             android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/test6_fragment_btn5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selector"
+            android:text="点击5"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/test6_fragment_btn6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selector"
+            android:text="点击6"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/test6_fragment_btn7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selector"
+            android:text="点击7"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
 
         <WebView
             android:id="@+id/test6_fragment_webview"

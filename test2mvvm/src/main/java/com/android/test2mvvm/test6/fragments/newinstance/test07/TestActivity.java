@@ -1,6 +1,9 @@
 package com.android.test2mvvm.test6.fragments.newinstance.test07;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +20,7 @@ public class TestActivity extends AppCompatActivity implements BackHandledInterf
         setContentView(R.layout.test5_activity);
         WorkFragment workFragment = new WorkFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.test5_fragment, workFragment).commit();
+
     }
 
     @Override

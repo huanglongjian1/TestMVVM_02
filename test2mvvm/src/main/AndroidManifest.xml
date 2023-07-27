@@ -11,6 +11,16 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
+    <!-- 接收消息 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <!--  发送消息-->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!--  阅读消息-->
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <!--  写入消息-->
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
     <application
         android:name=".Test2_App"
         android:allowBackup="true"
@@ -86,8 +96,64 @@
             android:name=".test6.Test6_Activity"
             android:process=":web" />
 
+        <service android:name=".test6.test_fragment.test11.MessageService" />
+        <service android:name=".test6.test_fragment2.one.MessengerService" />
+        <service android:name=".test6.test_fragment2.two.Two_Service" />
+        <service android:name=".test6.test_fragment2.three.Three_Service"/>
+        <service
+            android:name=".test6.test_fragment.test06.MyService"
+            android:exported="true"
+            android:process=":myservice">
+            <intent-filter>
+                <!-- AIDL完整路径名。必须指明，客户端能够通过AIDL类名查找到它的实现类 -->
+                <action android:name="com.MyService" />
+            </intent-filter>
+        </service>
         <service android:name=".test5.fragment6.TestAppWidgetRemoteViewsService" />
+        <service
+            android:name=".test6.test_fragment.test07.TestService"
+            android:process=":web" />
+        <service android:name=".test6.test_fragment.test07.TestService_02" />
+        <service
+            android:name=".test6.test_fragment.test07.TestService_03"
+            android:process=":web" />
+        <service
+            android:name=".test6.test_fragment.test09.TestSevice"
+            android:process=":web" />
+        <service
+            android:name=".test6.test_fragment.test10.TimerService"
+            android:process=":web" />
+        <service android:name=".test6.test_fragment.test11.MsgService" />
 
+        <receiver
+            android:name=".test6.test_fragment.test11.Fragment_11$MsgReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.MsgReceiver" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".test6.test_fragment.test11.MessageReciever"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".test6.test_fragment.test11.Fragment_11$TestReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="MsgReceiver" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".test6.test_fragment.test11.Fragment_11$TestStaticReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.test2static" />
+            </intent-filter>
+        </receiver>
         <receiver
             android:name=".test5.fragment6.TestAppWidgetRemoteViews"
             android:exported="true">
