@@ -50,11 +50,15 @@ import com.android.test2mvvm.test6.fragments.result.fragmentb.Result_Fragment_03
 import com.android.test2mvvm.test6.fragments.seekbar_fragment.SeekBar_Fragment;
 import com.android.test2mvvm.test6.fragments.test_fragment.Test_Fragment;
 import com.android.test2mvvm.test6.test_fragment.Test_Fragment_01;
+import com.android.test2mvvm.test6.test_fragment2.Test_Fragment2;
 import com.android.test2mvvm.util.Constants;
 import com.android.test2mvvm.util.Loge;
 import com.android.test2mvvm.util.onbackpressed.BackHandlerHelper;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,12 +103,15 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
 
     @Override
     protected void processLogic() {
+        Loge.e(getClass().getPackage().getName()+"------");
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
         List<Fragment> fragmentList = new ArrayList<>();
 
+        fragmentList.add(Test_Fragment2.newInstance("就是这么酷"));
         fragmentList.add(Test_Fragment_01.newInstance(null));
         fragmentList.add(Test_Fragment.newInstance("测试fragmentAAA"));
         fragmentList.add(new TestBehavior_02());
@@ -455,5 +462,8 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
             Log.i(TAG, "onFragmentDetached: " + f.getClass().getSimpleName());
         }
     };
-
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onMsg(String msg) {
+        Loge.e(msg + "---------");
+    }
 }

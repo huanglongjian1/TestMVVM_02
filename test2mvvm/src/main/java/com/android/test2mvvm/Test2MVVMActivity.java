@@ -1,10 +1,15 @@
 package com.android.test2mvvm;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +21,8 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.test2mvvm.test4.Test;
 import com.android.test2mvvm.test4.fragment3.RecyclerViewActivity;
+import com.android.test2mvvm.test6.Test6_Activity;
+import com.android.test2mvvm.test6.test_fragment2.util.Util_ActivityResultContract;
 import com.android.test2mvvm.util.Constants;
 import com.android.test2mvvm.util.Loge;
 import com.android.test2mvvm.util.SharedPreferencesUtil;
@@ -26,10 +33,43 @@ import java.util.List;
 @Route(path = Constants.TEST2_MVVMACTIVITY)
 public class Test2MVVMActivity extends AppCompatActivity {
     int i = 0;
+    ActivityResultLauncher launcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        ActivityResultContract activityResultContract = new ActivityResultContract() {
+//            @NonNull
+//            @Override
+//            public Intent createIntent(@NonNull Context context, Object input) {
+//                String name = (String) input;
+//                try {
+//                    Class<Activity> activityClass = (Class<Activity>) Class.forName(name);
+//                    return new Intent(Test2MVVMActivity.this, activityClass);
+//                } catch (ClassNotFoundException e) {
+//                    e.printStackTrace();
+//                }
+//                return null;
+//            }
+//
+//            @Override
+//            public Object parseResult(int resultCode, @Nullable Intent intent) {
+//                if (resultCode == Activity.RESULT_OK) {
+//                    String data = intent.getStringExtra("result");
+//                    return data;
+//                } else {
+//                    return "";
+//                }
+//
+//            }
+//        };
+        launcher = registerForActivityResult(Util_ActivityResultContract.startActivityForResult(), new ActivityResultCallback<String>() {
+            @Override
+            public void onActivityResult(String result) {
+                Loge.e("返回数据:" + result);
+            }
+        });
+
         Test2_App.string = "初始化";
         setContentView(R.layout.activity_test2);
         ActionBar bar = getSupportActionBar();
@@ -38,10 +78,12 @@ public class Test2MVVMActivity extends AppCompatActivity {
         findViewById(R.id.main_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build(Constants.TEST6_ACTIVITY).navigation();
+                //   ARouter.getInstance().build(Constants.TEST6_ACTIVITY).navigation();
                 // startActivity(new Intent(Test2MVVMActivity.this, Test.class));
                 //  startActivity(new Intent(Test2MVVMActivity.this, RecyclerViewActivity.class));
                 //    startActivity(new Intent(Test2MVVMActivity.this, Test.class));
+             //   launcher.launch(Test6_Activity.class.getName());
+                launcher.launch(new Util_ActivityResultContract.Input(Test6_Activity.class.getName(),1));
             }
         });
         //    getCurrentProcessNameByActivityManager(this);

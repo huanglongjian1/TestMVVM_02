@@ -19,6 +19,9 @@ import com.android.test2mvvm.test5.fragment7.dao.AppDatabase;
 import com.android.test2mvvm.util.Loge;
 import com.tencent.mmkv.MMKV;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.List;
 
 import dagger.hilt.android.HiltAndroidApp;
@@ -101,5 +104,9 @@ public class Test2_App extends Application {
 
     public void test(Boolean b, Integer integer) {
         Loge.e(String.valueOf(b) + integer + "测试测试");
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
+    public void Msg(String msg){
+        Loge.e(msg);
     }
 }

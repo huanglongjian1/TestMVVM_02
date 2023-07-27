@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function sum(a,b){
+        android.test(a+b);
+        return a+b;
+        }
+        var i=0;
+        function s(){
+        var result =window.android.back();
+        i++;
+        document.getElementById("p").innerHTML=result+i;
+        }
+        function test(){
+        android.test("com.android.test2mvvm.Test2_App");
+        alert("测试对话框");
+        }
+    </script>
+</head>
+<body>
+<button onclick="s()">调用本地方法</button>
+<button onclick="test()">根据string反射调用类</button>
+<a href="file:///android_asset/test2.html">点击</a>
+<p id="p"></p>
+</body>
+</html>
