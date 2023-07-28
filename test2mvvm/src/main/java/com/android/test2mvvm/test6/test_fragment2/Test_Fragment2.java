@@ -12,6 +12,8 @@ import com.android.test2mvvm.test6.test_fragment2.five.Five_Fragment;
 import com.android.test2mvvm.test6.test_fragment2.four.F4_fragment;
 import com.android.test2mvvm.test6.test_fragment2.four.Four_Fragment;
 import com.android.test2mvvm.test6.test_fragment2.one.One_Fragment;
+import com.android.test2mvvm.test6.test_fragment2.senven.Senven_Fragment;
+import com.android.test2mvvm.test6.test_fragment2.six.Six_Fragment;
 import com.android.test2mvvm.test6.test_fragment2.three.F3_Fragment;
 import com.android.test2mvvm.test6.test_fragment2.three.Three_Fragment;
 import com.android.test2mvvm.test6.test_fragment2.two.Two_Fragment;
@@ -62,7 +64,19 @@ public class Test_Fragment2 extends BaseFragment<TestFragment02Binding> {
         binding.test6FragmentBtn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Five_Fragment().show(getChildFragmentManager(),Five_Fragment.class.getSimpleName());
+                new Five_Fragment().show(getChildFragmentManager(), Five_Fragment.class.getSimpleName());
+            }
+        });
+        binding.test6FragmentBtn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Six_Fragment().show(getChildFragmentManager(), Six_Fragment.class.getSimpleName());
+            }
+        });
+        binding.test6FragmentBtn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Senven_Fragment().show(getChildFragmentManager(),Senven_Fragment.class.getSimpleName());
             }
         });
     }
