@@ -53,6 +53,7 @@ public class F4_Fragment_02 extends Util_BaseFullBottomSheetFragment<ImageLayout
                 Loge.e(layoutParams.height + ":" + layoutParams.width);
             }
         });
+
     }
 
     public static Fragment newInstance(String name) {

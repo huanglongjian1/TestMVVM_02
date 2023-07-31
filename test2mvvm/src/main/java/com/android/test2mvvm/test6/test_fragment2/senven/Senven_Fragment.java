@@ -2,11 +2,11 @@ package com.android.test2mvvm.test6.test_fragment2.senven;
 
 import android.Manifest;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 
 import androidx.activity.result.ActivityResult;
@@ -16,12 +16,9 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 
 import com.android.test2mvvm.R;
-import com.android.test2mvvm.Test2_App;
 import com.android.test2mvvm.databinding.TestBottomsheetfragmentBinding;
 import com.android.test2mvvm.test6.test_fragment2.util.Util_BaseFullBottomSheetFragment;
 import com.android.test2mvvm.util.Loge;
-
-import java.io.File;
 
 public class Senven_Fragment extends Util_BaseFullBottomSheetFragment<TestBottomsheetfragmentBinding> {
     @Override
@@ -108,6 +105,35 @@ public class Senven_Fragment extends Util_BaseFullBottomSheetFragment<TestBottom
                 Files_Util.createFile(getContext(), "today.txt");
             }
         });
+        binding.test6FragmentBtn5.setText("skip");
+        binding.test6FragmentBtn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent("com.test");
+                // startActivity(intent);
+                activityResultLauncher.launch(intent);
+            }
+        });
+        binding.test6FragmentBtn6.setText("query");
+        binding.test6FragmentBtn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = getActivity().getPackageManager().getLaunchIntentForPackage("com.android.newtest");
+                if (intent != null) {
+                    activityResultLauncher.launch(intent);
+                } else {
+                    Loge.e("intent 为null");
+                }
+            }
+        });
+        binding.test6FragmentBtn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launcher_permission.launch(Manifest.permission.CAMERA);
+                Loge.e(String.valueOf(isGRANTED()));
+                if (isGRANTED()) launcher_video.launch(MediaStore.ACTION_VIDEO_CAPTURE);
+            }
+        });
     }
 
     @Override
@@ -123,6 +149,8 @@ public class Senven_Fragment extends Util_BaseFullBottomSheetFragment<TestBottom
     private ActivityResultLauncher resultLauncher;
     private ActivityResultLauncher launcher_permission;
     private boolean isGRANTED = false;
+    private ActivityResultLauncher activityResultLauncher;
+    private ActivityResultLauncher launcher_video;
 
     public boolean isGRANTED() {
         return isGRANTED;
@@ -141,6 +169,20 @@ public class Senven_Fragment extends Util_BaseFullBottomSheetFragment<TestBottom
             @Override
             public void onActivityResult(Boolean result) {
                 isGRANTED = result;
+            }
+        });
+        activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                Intent intent = result.getData();
+                Loge.e(intent.getStringExtra("result") + result.getResultCode());
+
+            }
+        });
+        launcher_video = registerForActivityResult(new ActivityResultContracts.TakeVideo(), new ActivityResultCallback<Bitmap>() {
+            @Override
+            public void onActivityResult(Bitmap result) {
+                Loge.e(result.toString());
             }
         });
     }

@@ -41,6 +41,9 @@ public abstract class ObservableArrayList_BaseRecyclerViewAdapter<T, VDB extends
         }
     }
 
+    public void add(T data) {
+        data_list.add(data);
+    }
 
     public void reset(int position, T data) {
         data_list.set(position, data);

@@ -17,19 +17,20 @@ import com.android.test2mvvm.util.Loge;
 
 
 public class MessengerService extends Service {
-    Messenger messenger = new Messenger(new MessengerHandler());
+    static Messenger messenger = new Messenger(new MessengerHandler());
     int anInt = 0;
+    boolean isSentMSG = false;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
+        isSentMSG = true;
         Loge.e("onCreate");
         Loge.e(String.valueOf(android.os.Process.myPid()) + ": onCreate");
         ExecutorUtil.execute(new Runnable() {
             @Override
             public void run() {
-                while (true) {
+                while (isSentMSG) {
                     if (messengerClient != null) {
                         Bundle bundle = new Bundle();
                         bundle.putString("service", "服务器发消息" + anInt++);
@@ -64,13 +65,15 @@ public class MessengerService extends Service {
     public void onDestroy() {
         super.onDestroy();
         Loge.e("onDestroy");
+        isSentMSG=false;
         messenger = null;
         messengerClient = null;
+
     }
 
-    Messenger messengerClient;
+    static Messenger messengerClient;
 
-    public class MessengerHandler extends Handler {
+    public static class MessengerHandler extends Handler {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);

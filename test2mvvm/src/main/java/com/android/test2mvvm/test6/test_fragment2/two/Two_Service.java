@@ -17,11 +17,13 @@ import com.android.test2mvvm.test1.fragment8.ExecutorUtil;
 import com.android.test2mvvm.util.Loge;
 
 public class Two_Service extends Service {
+    boolean isSentMsg = false;
 
     @Override
     public void onCreate() {
         super.onCreate();
         Loge.e("onCreate");
+        isSentMsg = true;
     }
 
     @Override
@@ -40,7 +42,7 @@ public class Two_Service extends Service {
         ExecutorUtil.execute(new Runnable() {
             @Override
             public void run() {
-                while (true) {
+                while (isSentMsg) {
                     if (messenger != null) {
                         Loge.e("onCreate" + messenger.toString());
                         Bundle bundle = new Bundle();
@@ -70,6 +72,7 @@ public class Two_Service extends Service {
     public void onDestroy() {
         super.onDestroy();
         Loge.e("onDestroy");
+        isSentMsg = false;
         messenger = null;
         messengerService = null;
         message = null;
@@ -85,7 +88,7 @@ public class Two_Service extends Service {
     Message message = Message.obtain();
 
     Messenger messenger;
-    Messenger messengerService = new Messenger(new Handler(Looper.getMainLooper()) {
+    static Messenger messengerService = new Messenger(new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);

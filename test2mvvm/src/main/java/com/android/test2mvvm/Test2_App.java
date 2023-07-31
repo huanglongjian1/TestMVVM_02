@@ -3,18 +3,14 @@ package com.android.test2mvvm;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.databinding.DataBindingUtil;
-import androidx.startup.AppInitializer;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.test2mvvm.test1.fragment10.binding.ProductionComponent;
-import com.android.test2mvvm.test5.fragment6.cp.TestProvider;
-import com.android.test2mvvm.test5.fragment6.startup.SDKInitializer;
 import com.android.test2mvvm.test5.fragment7.dao.AppDatabase;
 import com.android.test2mvvm.util.Loge;
 import com.tencent.mmkv.MMKV;
@@ -63,6 +59,7 @@ public class Test2_App extends Application {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             Loge.e(Application.getProcessName() + "     :app");
         }
+
     }
 
     public static AppDatabase getDb() {

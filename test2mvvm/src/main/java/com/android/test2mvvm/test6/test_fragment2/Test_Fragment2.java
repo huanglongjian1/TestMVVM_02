@@ -8,12 +8,15 @@ import androidx.fragment.app.Fragment;
 import com.android.test2mvvm.R;
 import com.android.test2mvvm.databinding.TestFragment02Binding;
 import com.android.test2mvvm.test4.base.BaseFragment;
+import com.android.test2mvvm.test6.test_fragment2.eight.Eight_Fragment;
 import com.android.test2mvvm.test6.test_fragment2.five.Five_Fragment;
 import com.android.test2mvvm.test6.test_fragment2.four.F4_fragment;
 import com.android.test2mvvm.test6.test_fragment2.four.Four_Fragment;
+import com.android.test2mvvm.test6.test_fragment2.night.Night_Fragment;
 import com.android.test2mvvm.test6.test_fragment2.one.One_Fragment;
 import com.android.test2mvvm.test6.test_fragment2.senven.Senven_Fragment;
 import com.android.test2mvvm.test6.test_fragment2.six.Six_Fragment;
+import com.android.test2mvvm.test6.test_fragment2.ten.Ten_Fragment;
 import com.android.test2mvvm.test6.test_fragment2.three.F3_Fragment;
 import com.android.test2mvvm.test6.test_fragment2.three.Three_Fragment;
 import com.android.test2mvvm.test6.test_fragment2.two.Two_Fragment;
@@ -76,7 +79,25 @@ public class Test_Fragment2 extends BaseFragment<TestFragment02Binding> {
         binding.test6FragmentBtn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Senven_Fragment().show(getChildFragmentManager(),Senven_Fragment.class.getSimpleName());
+                new Senven_Fragment().show(getChildFragmentManager(), Senven_Fragment.class.getSimpleName());
+            }
+        });
+        binding.test6FragmentBtn8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Eight_Fragment().show(getChildFragmentManager(), Eight_Fragment.class.getSimpleName());
+            }
+        });
+        binding.test6FragmentBtn9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Night_Fragment().show(getChildFragmentManager(), Night_Fragment.class.getSimpleName());
+            }
+        });
+        binding.test6FragmentBtn10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Ten_Fragment().show(getChildFragmentManager(),Ten_Fragment.class.getSimpleName());
             }
         });
     }

@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 import com.android.test2mvvm.test6.basebottomsheet.BaseFullBottomSheetFragment;
+import com.android.test2mvvm.util.Loge;
 
 public abstract class Util_BaseFullBottomSheetFragment<T extends ViewDataBinding> extends BaseFullBottomSheetFragment {
     protected T binding;
@@ -46,6 +47,7 @@ public abstract class Util_BaseFullBottomSheetFragment<T extends ViewDataBinding
     @Override
     public void onDestroy() {
         super.onDestroy();
+        Loge.e(this.getClass().getSimpleName()+":onDestroy");
         binding = null;
     }
 
