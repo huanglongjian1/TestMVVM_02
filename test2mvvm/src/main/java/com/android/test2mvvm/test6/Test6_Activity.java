@@ -51,6 +51,7 @@ import com.android.test2mvvm.test6.fragments.seekbar_fragment.SeekBar_Fragment;
 import com.android.test2mvvm.test6.fragments.test_fragment.Test_Fragment;
 import com.android.test2mvvm.test6.test_fragment.Test_Fragment_01;
 import com.android.test2mvvm.test6.test_fragment2.Test_Fragment2;
+import com.android.test2mvvm.test6.test_fragment3.Test_Fragment3;
 import com.android.test2mvvm.util.Constants;
 import com.android.test2mvvm.util.Loge;
 import com.android.test2mvvm.util.onbackpressed.BackHandlerHelper;
@@ -78,10 +79,10 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Loge.e(Test2_App.string+"\\\\\\\\\\\\\\\\");
+        Loge.e(Test2_App.string + "\\\\\\\\\\\\\\\\");
         Loge.e(String.valueOf(android.os.Process.myPid()) + ":test6");
         getSupportFragmentManager().registerFragmentLifecycleCallbacks(mFragmentLifecycleCallbacks, true);
-     //   getCurrentProcessNameByActivityManager(this);
+        //   getCurrentProcessNameByActivityManager(this);
     }
 
     public static String getCurrentProcessNameByActivityManager(@NonNull Context context) {
@@ -103,7 +104,7 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
 
     @Override
     protected void processLogic() {
-        Loge.e(getClass().getPackage().getName()+"------");
+        Loge.e(getClass().getPackage().getName() + "------");
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -111,6 +112,7 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
 
         List<Fragment> fragmentList = new ArrayList<>();
 
+        fragmentList.add(Test_Fragment3.newInstance("test_fragment3"));
         fragmentList.add(Test_Fragment2.newInstance("就是这么酷"));
         fragmentList.add(Test_Fragment_01.newInstance(null));
         fragmentList.add(Test_Fragment.newInstance("测试fragmentAAA"));
@@ -462,6 +464,7 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
             Log.i(TAG, "onFragmentDetached: " + f.getClass().getSimpleName());
         }
     };
+
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void onMsg(String msg) {
         Loge.e(msg + "---------");

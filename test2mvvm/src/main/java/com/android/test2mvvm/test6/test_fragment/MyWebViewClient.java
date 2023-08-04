@@ -1,5 +1,7 @@
 package com.android.test2mvvm.test6.test_fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.net.http.SslError;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceRequest;
@@ -12,6 +14,13 @@ public class MyWebViewClient extends WebViewClient {
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
         Loge.e(String.valueOf(request.getUrl()));
+        if (request.getUrl().toString().startsWith("test")) {
+            Intent intent=new Intent("com.action");
+            intent.addCategory("android.intent.category.LAUNCHER");
+            Uri uri=Uri.parse(request.getUrl().toString());
+            intent.setData(uri);
+            view.getContext().startActivity(intent);
+        }
         return !canOpenWithWebView(String.valueOf(request.getUrl()));
     }
 

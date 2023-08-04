@@ -6,7 +6,7 @@
         <package android:name="com.android.newtest" />
     </queries>
 
-
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -26,7 +26,7 @@
     <!--  写入消息-->
     <uses-permission android:name="android.permission.WRITE_SMS" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
     <application
         android:name=".Test2_App"
         android:allowBackup="true"
@@ -68,7 +68,6 @@
                 android:resource="@xml/file_path" />
         </provider>
 
-
         <activity android:name=".test6.fragments.newinstance.test07.TestActivity" />
         <activity
             android:name=".Test"
@@ -84,8 +83,11 @@
             <intent-filter>
                 <action android:name="com.action" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" />
 
+                <data android:scheme="test" />
+                <data android:host="splash" />
 
             </intent-filter>
         </activity>
@@ -105,7 +107,17 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".test1.Test1_Activity" />
+        <activity
+            android:name=".test1.Test1_Activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.DIAL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".test2.Test2_Activity" />
         <activity android:name=".login.Login_Activity" />
         <activity

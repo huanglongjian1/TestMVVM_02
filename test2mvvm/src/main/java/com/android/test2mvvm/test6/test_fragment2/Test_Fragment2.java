@@ -9,6 +9,7 @@ import com.android.test2mvvm.R;
 import com.android.test2mvvm.databinding.TestFragment02Binding;
 import com.android.test2mvvm.test4.base.BaseFragment;
 import com.android.test2mvvm.test6.test_fragment2.eight.Eight_Fragment;
+import com.android.test2mvvm.test6.test_fragment2.eleven.Eleven_Fragment;
 import com.android.test2mvvm.test6.test_fragment2.five.Five_Fragment;
 import com.android.test2mvvm.test6.test_fragment2.four.F4_fragment;
 import com.android.test2mvvm.test6.test_fragment2.four.Four_Fragment;
@@ -97,7 +98,13 @@ public class Test_Fragment2 extends BaseFragment<TestFragment02Binding> {
         binding.test6FragmentBtn10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Ten_Fragment().show(getChildFragmentManager(),Ten_Fragment.class.getSimpleName());
+                new Ten_Fragment().show(getChildFragmentManager(), Ten_Fragment.class.getSimpleName());
+            }
+        });
+        binding.test6FragmentBtn11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Eleven_Fragment().show(getChildFragmentManager(), Eleven_Fragment.class.getSimpleName());
             }
         });
     }

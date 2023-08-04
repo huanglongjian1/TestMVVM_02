@@ -40,12 +40,7 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            String name = bundle.getString("new", "请赐我新名字");
-            Loge.e(name);
-            getActivity().setTitle(name);
-        }
+
 
     }
 
@@ -78,6 +73,12 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
         if (isFirstLoad) {
             onDataLazyLoad();
             isFirstLoad = false;
+        }
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            String name = bundle.getString(this.getClass().getSimpleName(), "请赐我新名字");
+            Loge.e(name);
+            getActivity().setTitle(name);
         }
     }
 
