@@ -2,8 +2,10 @@ package com.android.test2mvvm.test6;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.documentfile.provider.DocumentFile;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.DefaultLifecycleObserver;
@@ -52,6 +55,7 @@ import com.android.test2mvvm.test6.fragments.test_fragment.Test_Fragment;
 import com.android.test2mvvm.test6.test_fragment.Test_Fragment_01;
 import com.android.test2mvvm.test6.test_fragment2.Test_Fragment2;
 import com.android.test2mvvm.test6.test_fragment3.Test_Fragment3;
+import com.android.test2mvvm.test6.test_fragment4.Test_Fragment4;
 import com.android.test2mvvm.util.Constants;
 import com.android.test2mvvm.util.Loge;
 import com.android.test2mvvm.util.onbackpressed.BackHandlerHelper;
@@ -112,6 +116,7 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
 
         List<Fragment> fragmentList = new ArrayList<>();
 
+        fragmentList.add(Test_Fragment4.newInstance("第四页测试"));
         fragmentList.add(Test_Fragment3.newInstance("test_fragment3"));
         fragmentList.add(Test_Fragment2.newInstance("就是这么酷"));
         fragmentList.add(Test_Fragment_01.newInstance(null));
@@ -468,5 +473,40 @@ public class Test6_Activity extends BaseActivity<Test6_ViewModel, Test6ActivityB
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void onMsg(String msg) {
         Loge.e(msg + "---------");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 6666:
+                if (resultCode == Activity.RESULT_OK) {
+
+                    // 获取权限
+                    final int takeFlags = data.getFlags()
+                            & (Intent.FLAG_GRANT_READ_URI_PERMISSION
+                            | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                    getContentResolver().takePersistableUriPermission(data.getData(), takeFlags);
+                    // 保存获取的目录权限
+                    SharedPreferences sp = getSharedPreferences("DirPermission", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putString("uriTree", data.getData().toString());
+                    editor.apply();
+
+                    //now use DocumentFile to do some file op
+                    DocumentFile documentFile = DocumentFile
+                            .fromTreeUri(this, data.getData());
+                    DocumentFile[] files = documentFile.listFiles();
+                    Loge.e("保存了权限");
+                    for (DocumentFile documentFile1 : files) {
+                        Loge.e(documentFile.getName());
+                    }
+
+
+                }
+                break;
+            default:
+                break;
+        }
     }
 }

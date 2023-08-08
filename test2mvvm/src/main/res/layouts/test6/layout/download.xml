@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.android.test2mvvm.test6.test_fragment3.six.downbean.DownLoad_Bean" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/test6_fragment5_progressbar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="@{bean.progress}" />
+
+        <TextView
+            android:id="@+id/test6_fragment_down"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@={bean.download}"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/test6_fragment_pro_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@={bean.url}"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/test6_fragment_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="下载"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/test6_fragment_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>
